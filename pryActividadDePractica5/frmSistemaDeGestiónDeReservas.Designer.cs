@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             grpReserva = new GroupBox();
+            btnRegistrar = new Button();
+            lblDias = new Label();
+            txtDias = new TextBox();
             lblTipoCabana = new Label();
-            cmbTipocabana = new ComboBox();
+            cmbTipoCabana = new ComboBox();
             lblHuesped = new Label();
             txtHuesped = new TextBox();
             lblNroReserva = new Label();
             txtNroReserva = new TextBox();
-            txtDias = new TextBox();
-            lblDias = new Label();
-            btnRegistrar = new Button();
             dgvReservas = new DataGridView();
             colNroReserva = new DataGridViewTextBoxColumn();
             colHuesped = new DataGridViewTextBoxColumn();
@@ -57,7 +57,7 @@
             grpReserva.Controls.Add(lblDias);
             grpReserva.Controls.Add(txtDias);
             grpReserva.Controls.Add(lblTipoCabana);
-            grpReserva.Controls.Add(cmbTipocabana);
+            grpReserva.Controls.Add(cmbTipoCabana);
             grpReserva.Controls.Add(lblHuesped);
             grpReserva.Controls.Add(txtHuesped);
             grpReserva.Controls.Add(lblNroReserva);
@@ -69,75 +69,6 @@
             grpReserva.TabStop = false;
             grpReserva.Text = "Datos de la Reserva";
             // 
-            // lblTipoCabana
-            // 
-            lblTipoCabana.AutoSize = true;
-            lblTipoCabana.Location = new Point(225, 19);
-            lblTipoCabana.Name = "lblTipoCabana";
-            lblTipoCabana.Size = new Size(95, 15);
-            lblTipoCabana.TabIndex = 4;
-            lblTipoCabana.Text = "Tipo de Cabaña :";
-            // 
-            // cmbTipocabana
-            // 
-            cmbTipocabana.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbTipocabana.FormattingEnabled = true;
-            cmbTipocabana.Items.AddRange(new object[] { "Simple ($15.000/día)", "Doble ($25.000/día)", "Premium ($40.000/día)" });
-            cmbTipocabana.Location = new Point(203, 48);
-            cmbTipocabana.Name = "cmbTipocabana";
-            cmbTipocabana.Size = new Size(140, 23);
-            cmbTipocabana.TabIndex = 3;
-            // 
-            // lblHuesped
-            // 
-            lblHuesped.AutoSize = true;
-            lblHuesped.Location = new Point(18, 76);
-            lblHuesped.Name = "lblHuesped";
-            lblHuesped.Size = new Size(60, 15);
-            lblHuesped.TabIndex = 2;
-            lblHuesped.Text = "Huesped :";
-            // 
-            // txtHuesped
-            // 
-            txtHuesped.Location = new Point(84, 73);
-            txtHuesped.Name = "txtHuesped";
-            txtHuesped.Size = new Size(100, 23);
-            txtHuesped.TabIndex = 1;
-            // 
-            // lblNroReserva
-            // 
-            lblNroReserva.AutoSize = true;
-            lblNroReserva.Location = new Point(18, 30);
-            lblNroReserva.Name = "lblNroReserva";
-            lblNroReserva.Size = new Size(70, 15);
-            lblNroReserva.TabIndex = 1;
-            lblNroReserva.Text = "N° Reserva :";
-            // 
-            // txtNroReserva
-            // 
-            txtNroReserva.Location = new Point(94, 27);
-            txtNroReserva.MaxLength = 5;
-            txtNroReserva.Name = "txtNroReserva";
-            txtNroReserva.Size = new Size(84, 23);
-            txtNroReserva.TabIndex = 0;
-            // 
-            // txtDias
-            // 
-            txtDias.Location = new Point(62, 118);
-            txtDias.MaxLength = 2;
-            txtDias.Name = "txtDias";
-            txtDias.Size = new Size(100, 23);
-            txtDias.TabIndex = 5;
-            // 
-            // lblDias
-            // 
-            lblDias.AutoSize = true;
-            lblDias.Location = new Point(18, 121);
-            lblDias.Name = "lblDias";
-            lblDias.Size = new Size(35, 15);
-            lblDias.TabIndex = 6;
-            lblDias.Text = "Dias :";
-            // 
             // btnRegistrar
             // 
             btnRegistrar.Enabled = false;
@@ -147,6 +78,81 @@
             btnRegistrar.TabIndex = 7;
             btnRegistrar.Text = "Registrar Reserva";
             btnRegistrar.UseVisualStyleBackColor = true;
+            // 
+            // lblDias
+            // 
+            lblDias.AutoSize = true;
+            lblDias.Location = new Point(18, 121);
+            lblDias.Name = "lblDias";
+            lblDias.Size = new Size(35, 15);
+            lblDias.TabIndex = 6;
+            lblDias.Text = "Dias :";
+            lblDias.TextChanged += ValidarEntrada_TextChanged;
+            // 
+            // txtDias
+            // 
+            txtDias.Location = new Point(62, 118);
+            txtDias.MaxLength = 2;
+            txtDias.Name = "txtDias";
+            txtDias.Size = new Size(100, 23);
+            txtDias.TabIndex = 5;
+            txtDias.TextChanged += ValidarEntrada_TextChanged;
+            // 
+            // lblTipoCabana
+            // 
+            lblTipoCabana.AutoSize = true;
+            lblTipoCabana.Location = new Point(225, 19);
+            lblTipoCabana.Name = "lblTipoCabana";
+            lblTipoCabana.Size = new Size(95, 15);
+            lblTipoCabana.TabIndex = 4;
+            lblTipoCabana.Text = "Tipo de Cabaña :";
+            // 
+            // cmbTipoCabana
+            // 
+            cmbTipoCabana.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTipoCabana.FormattingEnabled = true;
+            cmbTipoCabana.Items.AddRange(new object[] { "Simple ($15.000/día)", "Doble ($25.000/día)", "Premium ($40.000/día)" });
+            cmbTipoCabana.Location = new Point(203, 48);
+            cmbTipoCabana.Name = "cmbTipoCabana";
+            cmbTipoCabana.Size = new Size(140, 23);
+            cmbTipoCabana.TabIndex = 3;
+            // 
+            // lblHuesped
+            // 
+            lblHuesped.AutoSize = true;
+            lblHuesped.Location = new Point(18, 76);
+            lblHuesped.Name = "lblHuesped";
+            lblHuesped.Size = new Size(60, 15);
+            lblHuesped.TabIndex = 2;
+            lblHuesped.Text = "Huesped :";
+            lblHuesped.TextChanged += ValidarEntrada_TextChanged;
+            // 
+            // txtHuesped
+            // 
+            txtHuesped.Location = new Point(84, 73);
+            txtHuesped.Name = "txtHuesped";
+            txtHuesped.Size = new Size(100, 23);
+            txtHuesped.TabIndex = 1;
+            txtHuesped.TextChanged += ValidarEntrada_TextChanged;
+            // 
+            // lblNroReserva
+            // 
+            lblNroReserva.AutoSize = true;
+            lblNroReserva.Location = new Point(18, 30);
+            lblNroReserva.Name = "lblNroReserva";
+            lblNroReserva.Size = new Size(70, 15);
+            lblNroReserva.TabIndex = 1;
+            lblNroReserva.Text = "N° Reserva :";
+            lblNroReserva.TextChanged += ValidarEntrada_TextChanged;
+            // 
+            // txtNroReserva
+            // 
+            txtNroReserva.Location = new Point(94, 27);
+            txtNroReserva.MaxLength = 5;
+            txtNroReserva.Name = "txtNroReserva";
+            txtNroReserva.Size = new Size(84, 23);
+            txtNroReserva.TabIndex = 0;
+            txtNroReserva.TextChanged += ValidarEntrada_TextChanged;
             // 
             // dgvReservas
             // 
@@ -244,7 +250,7 @@
         private Label lblHuesped;
         private TextBox txtHuesped;
         private Label lblTipoCabana;
-        private ComboBox cmbTipocabana;
+        private ComboBox cmbTipoCabana;
         private Button btnRegistrar;
         private Label lblDias;
         private TextBox txtDias;
